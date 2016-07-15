@@ -22,6 +22,7 @@ class AccountUserManager(UserManager):
         return user
 
 class User(AbstractUser):
+    stripe_id = models.CharField(max_length=40,default='')
 
 
 

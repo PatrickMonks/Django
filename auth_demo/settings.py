@@ -108,3 +108,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL =   'accounts.User'
+STRIPE_PUBLISHABLE =os.getenv('STRIPE_PUBLISHABLE','pk_test_q6oqFn34tQiftZrQnqSOwOIN')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_HLLC4z7x7xrQ36gOAOzIJsDx')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
