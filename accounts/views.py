@@ -49,20 +49,20 @@ def register(request):
                     auth.login(request, user)
                     messages.success(request, 'You have successfully registered')
                     # return redirect(reverse('profile'))
-                     return render(request, 'customer_info.html', {'cushty': customer})
-                else:
-                    messages.error(request, 'Unable to log you in at this time ')
+                    return render(request, 'customer_info.html', {'cushty': customer})
             else:
-                messages.error(request, 'Unable to take payment with that card')
+                messages.error(request, 'Unable to log you in at this time ')
+        else:
+            messages.error(request, 'Unable to take payment with that card')
 
     else:
         today = datetime.date.today()
         form = UserRegistrationForm()
 
-    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE}
-    args.update(csrf(request))
+        args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE}
+        args.update(csrf(request))
 
-    return render(request, 'register.html', args)
+        return render(request, 'register.html', args)
 
 
 @login_required(login_url='/accounts/login/')
